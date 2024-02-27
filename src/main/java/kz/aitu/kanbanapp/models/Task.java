@@ -1,6 +1,14 @@
 package kz.aitu.kanbanapp.models;
 
+import jakarta.persistence.*;
+import lombok.Data;
+
+@Data
+@Entity
+@Table(name = "tasks")
 public class Task {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String title;
     private String description;
@@ -12,6 +20,7 @@ public class Task {
         this.description = description;
         this.status = status;
     }
+    public Task() {}
 
     //Getter to title
     public String getTitle() {

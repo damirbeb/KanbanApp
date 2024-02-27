@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import kz.aitu.kanbanapp.models.Task;
-import kz.aitu.kanbanapp.repositories.TaskManager;
+import kz.aitu.kanbanapp.services.TaskManager;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

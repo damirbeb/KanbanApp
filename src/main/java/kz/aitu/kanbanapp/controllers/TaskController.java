@@ -1,7 +1,7 @@
 package kz.aitu.kanbanapp.controllers;
 
 import kz.aitu.kanbanapp.models.Task;
-import kz.aitu.kanbanapp.repositories.TaskManager;
+import kz.aitu.kanbanapp.services.TaskManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,11 +1,14 @@
-package kz.aitu.kanbanapp.repositories;
+package kz.aitu.kanbanapp.services;
 import kz.aitu.kanbanapp.models.Task;
+import org.springframework.stereotype.Service;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 import static kz.aitu.kanbanapp.data.DBConnection.connect;
 
+@Service
 public class TaskManager {
 
     public static void addTask(Task task) {
