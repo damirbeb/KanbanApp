@@ -1,6 +1,5 @@
 package kz.aitu.kanbanapp.repositories;
 import kz.aitu.kanbanapp.models.Task;
-
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

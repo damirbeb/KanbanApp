@@ -1,14 +1,32 @@
 package kz.aitu.kanbanapp.controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import kz.aitu.kanbanapp.models.Task;
+import kz.aitu.kanbanapp.repositories.TaskManager;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("kanban")
+@RequestMapping("/tasks")
 public class TaskController {
+
+    @Autowired
+    private TaskManager taskManager;
+
+    @PostMapping
+    public Task addTask(@RequestBody Task task) {
+        taskManager.addTask(task);
+        return task;
+    }
+
     @GetMapping
-    public String greeting(){
-        return "Welcome to your Personal Kanban!";
+    public List<Task> viewTasksByStatus(@RequestParam String status) {
+        return taskManager.getTasksByStatus(status);
+    }
+
+    @PutMapping("/{taskId}")
+    public void updateTaskStatus(@PathVariable int taskId, @RequestParam String status) {
+        taskManager.updateTaskStatus(taskId, status);
     }
 }
