@@ -1,5 +1,7 @@
 package kz.aitu.kanbanapp.services;
 import kz.aitu.kanbanapp.models.Task;
+import kz.aitu.kanbanapp.repositories.TaskRepositoryInterface;
+import kz.aitu.kanbanapp.services.interfaces.TaskManagerInterface;
 import org.springframework.stereotype.Service;
 
 import java.sql.*;
@@ -9,7 +11,17 @@ import java.util.List;
 import static kz.aitu.kanbanapp.data.DBConnection.connect;
 
 @Service
-public class TaskManager {
+public class TaskManager implements TaskManagerInterface {
+
+    private final TaskRepositoryInterface repo;
+
+    public TaskManager(TaskRepositoryInterface repo) {
+        this.repo = repo;
+    }
+
+    public List<Task> getAll() {
+        return repo.findAll();
+    }
 
     public static void addTask(Task task) {
         try (Connection connection = connect();

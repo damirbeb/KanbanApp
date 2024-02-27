@@ -14,14 +14,19 @@ public class TaskController {
     @Autowired
     private TaskManager taskManager;
 
-    @PostMapping
+    @GetMapping("/")
+    public List<Task> getAll(){
+        return taskManager.getAll();
+    }
+
+    @PostMapping("/")
     public Task addTask(@RequestBody Task task) {
         taskManager.addTask(task);
         return task;
     }
 
-    @GetMapping
-    public List<Task> viewTasksByStatus(@RequestParam String status) {
+    @GetMapping("/{status}")
+    public List<Task> viewTasksByStatus(@PathVariable String status) {
         return taskManager.getTasksByStatus(status);
     }
 
