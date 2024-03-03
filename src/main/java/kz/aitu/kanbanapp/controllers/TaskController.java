@@ -19,7 +19,7 @@ public class TaskController {
         return taskManager.getAll();
     }
 
-    @PostMapping("/")
+    @PostMapping("/add")
     public Task addTask(@RequestBody Task task) {
         taskManager.addTask(task);
         return task;
@@ -30,7 +30,7 @@ public class TaskController {
         return taskManager.getTasksByStatus(status);
     }
 
-    @PutMapping("/{taskId}")
+    @PutMapping("/update")
     public void updateTaskStatus(@PathVariable int taskId, @RequestParam String status) {
         taskManager.updateTaskStatus(taskId, status);
     }
